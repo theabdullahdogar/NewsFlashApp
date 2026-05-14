@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.WifiOff
+import androidx.compose.material.icons.filled.Article
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -134,17 +135,21 @@ fun HomeScreen(
                 )
 
                 is NewsUiState.Success -> {
-                    LazyColumn(
-                        contentPadding      = PaddingValues(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        items(state.articles) { article ->
-                            ArticleCard(
-                                article  = article,
-                                onClick  = { onArticleClick(article) }
-                            )
+                    if (state.articles.isEmpty()) {
+                        EmptyView()
+                    } else {
+                        LazyColumn(
+                            contentPadding      = PaddingValues(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            items(state.articles) { article ->
+                                ArticleCard(
+                                    article  = article,
+                                    onClick  = { onArticleClick(article) }
+                                )
+                            }
+                            item { Spacer(Modifier.height(8.dp)) }
                         }
-                        item { Spacer(Modifier.height(8.dp)) }
                     }
                 }
             }
@@ -333,6 +338,39 @@ private fun ErrorView(message: String, onRetry: () -> Unit) {
                 Spacer(Modifier.width(8.dp))
                 Text("Try Again", color = Color.White, fontWeight = FontWeight.SemiBold)
             }
+        }
+    }
+}
+
+@Composable
+private fun EmptyView() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Icon(
+                imageVector        = Icons.Default.Article,
+                contentDescription = null,
+                tint               = TextSecondary,
+                modifier           = Modifier.size(64.dp)
+            )
+            Text(
+                text       = "No news available",
+                color      = TextPrimary,
+                fontSize   = 18.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+            Text(
+                text     = "No English headlines found for this country right now.",
+                color    = TextSecondary,
+                fontSize = 13.sp
+            )
         }
     }
 }

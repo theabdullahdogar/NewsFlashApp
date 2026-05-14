@@ -13,4 +13,12 @@ interface NewsApiService {
         @Query("max")      max: Int         = 10,
         @Query("apikey")   apiKey: String
     ): NewsResponse
+
+    @GET("search")
+    suspend fun searchNews(
+        @Query("q")      query: String,
+        @Query("lang")   lang: String = "en",
+        @Query("max")    max: Int     = 10,
+        @Query("apikey") apiKey: String
+    ): NewsResponse
 }
