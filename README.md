@@ -82,8 +82,6 @@ app/src/main/java/com/example/madquiz/
 3. Wait for Gradle sync to complete
 4. Run on an emulator or physical device (API 24+)
 
-> The API key is already embedded in `NewsViewModel.kt` for convenience during evaluation.
-
 ---
 
 ## API
