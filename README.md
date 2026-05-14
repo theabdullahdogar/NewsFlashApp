@@ -6,16 +6,19 @@ A modern Android news app built with **Jetpack Compose** that displays real-time
 
 ## APK Download
 
-The pre-built debug APK is generated automatically by GitHub Actions on every push to `main`.
+### Direct Download (Recommended)
 
-**To download the APK:**
+The pre-built APK is committed directly to this repository:
+
+**[`apk/NewsFlash-debug.apk`](apk/NewsFlash-debug.apk)**
+
+Click the link above → click the **Download raw file** button (⬇ icon, top-right) to download and install.
+
+### Via GitHub Actions (auto-built on every push)
 
 1. Go to the [Actions tab](https://github.com/theabdullahdogar/NewsFlashApp/actions)
 2. Click the latest **"Build Debug APK"** workflow run
-3. Scroll down to **Artifacts**
-4. Download **`NewsFlashApp-debug`** (contains `app-debug.apk`)
-
-> **Note:** Artifacts are kept for **7 days** per run. If the latest run's artifact has expired, trigger a new build by clicking **"Run workflow"** on the Actions page.
+3. Scroll down to **Artifacts** → download **`NewsFlashApp-debug`**
 
 ---
 
